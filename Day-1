@@ -1,0 +1,89 @@
+data=c(13, 15, 16, 16, 19, 20, 20, 21, 22, 22, 25, 25, 25, 25, 30, 33, 33, 35, 35, 35, 35, 36, 40, 45, 46, 52, 70)
+mean(data)
+median(data)
+mode=names(table(data))[table(data)==max(table(data))]
+mode
+midrange=(max(data)+min(data))/2
+midrange
+quantile(age,.25)
+quantile(age,.75)
+
+v<-c(200, 300, 400, 600, 1000)
+max=1
+min=0
+for(i in v){
+  min_max=((i-200)/(1000-200))*(max-min)+min
+  print(min_max)
+}
+m=mean(v)
+s=sd(v)
+for(i in v){
+  z_score=(i-m)/s
+  print(z_score)
+}
+
+data <- c(11,13,13,15,15,16,19,20,20,20,21,21,22,23,24,30,40,45,45,45,71,72,73,75)
+bins <- 4
+bin_indices=cut(data,bins)
+bin_mean=tapply(data,bin_indices,mean)
+print(bin_mean)
+bin_median=tapply(data,bin_indices,median)
+print(bin_median)
+min_max=tapply(data,bin_indices,function(x)c(min(x),max(x)))
+print(min_max)
+
+age<-c(23,23,27,27,39,41,47,49,50,52,54,54,56,57,58,58,60,61)
+fat<-c(9.5,26.5,7.8,17.8,31.4,25.9,27.4,27.2,31.2,34.6,42.5,28.8,33.4,30.2,34.1,32.9,41.2,35.7)
+mean(age)
+median(age)
+sd(age)
+mean(fat)
+median(fat)
+sd(fat)
+boxplot(age,fat)
+scatter.smooth(age,fat)
+qqplot(age,fat)
+
+
+age<-c(23,23,27,27,39,41,47,49,50,52,54,54,56,57,58,58,60,61)
+min=0
+max=i=35
+m=mean(age)
+min_max=((i-23)/61-23)*(max-min)+min
+print(min_max)
+z_score=(i-m)/12.94
+print(z_score)
+decimal_scaling=i/100
+print(decimal_scaling)
+
+
+pencils<-c(9,25,23,12,11,6,7,8,9,10)
+mean(pencils)
+median(pencils)
+mode=names(table(pencils))[table(pencils)==max(table(pencils))]
+mode
+
+
+x<-c(4,1,5,7,10,2,50,25,90,36)
+scatter.smooth(x)
+
+
+marks <- c(55, 60, 71, 63, 55, 65, 50, 55, 58, 59, 61, 63, 65, 67, 71, 72, 75)
+bins=3
+bins_frequency=cut(marks,bins)
+hist(marks,breaks=bins,col="blue",xlab="marks",main="equal_frequncy partitioning")
+#equal_width partitioning
+data<- c(55, 60, 71, 63, 55, 65, 50, 55, 58, 59, 61, 63, 65, 67, 71, 72, 75)
+bin_mean=tapply(data,bins_frequency,mean)
+smoothing_by_mean=unname(bin_mean[as.character(bins_frequency)])
+bin_median=tapply(data,bins_frequency,median)
+smoothing_by_median=unname(bin_median[as.character(bins_frequency)])
+bin_boundaries=tapply(data,bins_frequency,function(x)c(min(x),max(x)))
+smoothing_by_boundaries=unlist(bin_boundaries[as.character(bins_frequency)])
+print("smoothed by bin mean")
+print(smoothing_by_mean)
+print("smoothed by median")
+print(smoothing_by_median)
+print("smoothed by boundaries")
+print(smoothing_by_boundaries)
+
